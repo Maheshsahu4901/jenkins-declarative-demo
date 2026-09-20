@@ -1,21 +1,22 @@
-pipeline{
+pipeline {
     agent any
-    environment{
+
+    environment {
         PATH = "/usr/bin:$PATH"
     }
-    stages{
-        stage("Git Checkout"){
-            steps{
+
+    stages {
+        stage("Git Checkout") {
+            steps {
                 git branch: 'main', url: 'https://github.com/Maheshsahu4901/jenkins-declarative-demo.git'
             }
         }
-        stage("Maven build"){
-             steps{
+
+        stage("Maven Build") {
+            steps {
                 sh "pwd"
                 sh "ls -la"
                 sh "find . -name pom.xml"
-            }
-        }
             }
         }
     }
