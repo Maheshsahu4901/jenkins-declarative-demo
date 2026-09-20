@@ -6,6 +6,7 @@ pipeline {
     }
 
     stages {
+
         stage("Git Checkout") {
             steps {
                 git branch: 'main', url: 'https://github.com/Maheshsahu4901/jenkins-declarative-demo.git'
@@ -14,9 +15,7 @@ pipeline {
 
         stage("Maven Build") {
             steps {
-                sh "pwd"
-                sh "ls -la"
-                sh "find . -name pom.xml"
+                sh "mvn clean package"
             }
         }
     }
