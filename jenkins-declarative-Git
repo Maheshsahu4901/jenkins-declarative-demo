@@ -20,7 +20,8 @@ pipeline {
             }
         }
         stage("Deploy-dev"){
-            sshagent(credentials: ['tomcat-new'], executable: '') {
+            steps{
+                sshagent(credentials: ['tomcat-new'], executable: '') {
                 sh """
                     scp -o StrictHostKeyChecking=no target/myweb.war ubuntu@172.31.36.194:/tmp/tomcat9/webapps/
 
@@ -28,6 +29,7 @@ pipeline {
 
                     ssh ubuntu@172.31.36.194 /tmp/tomcat9/bin/startup.sh
                 """
+                }
             }
           
         }
